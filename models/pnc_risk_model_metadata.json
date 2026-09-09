@@ -1,0 +1,51 @@
+{
+  "target": "missed_timely_pnc",
+  "positive_class": "Missed timely PNC",
+  "selected_model": "Tuned XGBoost",
+  "decision_threshold": 0.27827033400535583,
+  "predictors": [
+    "maternal_age",
+    "county_name",
+    "residence",
+    "education_level",
+    "wealth_quintile",
+    "children_ever_born",
+    "marital_status",
+    "currently_working",
+    "pregnancy_intention",
+    "first_anc_month",
+    "anc_visits",
+    "delivery_place",
+    "caesarean_delivery"
+  ],
+  "test_rows": 2092,
+  "test_metrics": {
+    "PR-AUC": 0.6484744419295572,
+    "ROC-AUC": 0.8050162745861639,
+    "Recall": 0.897003745318352,
+    "Precision": 0.3373239436619718,
+    "F2": 0.6735095613048369,
+    "Balanced accuracy": 0.646512142235556,
+    "Accuracy": 0.5239005736137667,
+    "Brier score (lower is better)": 0.16635830700397491
+  },
+  "best_parameters": {
+    "model__subsample": 0.8,
+    "model__reg_lambda": 1.0,
+    "model__reg_alpha": 0.0,
+    "model__n_estimators": 400,
+    "model__min_child_weight": 10,
+    "model__max_depth": 3,
+    "model__learning_rate": 0.03,
+    "model__gamma": 0.0,
+    "model__colsample_bytree": 1.0
+  },
+  "random_state": 42,
+  "environment": {
+    "conda_environment": "labs-env",
+    "python": "3.12.13",
+    "scikit_learn": "1.9.0",
+    "xgboost": "3.3.0",
+    "shap": "0.52.0"
+  }
+}
