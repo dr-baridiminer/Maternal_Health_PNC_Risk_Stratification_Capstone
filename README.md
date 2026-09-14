@@ -1,5 +1,40 @@
 # Maternal_Health_PNC_Risk_Stratification_Capstone
 DSF-FT16HYB- Group 2 Capstone project
+
+## Local Streamlit decision-support prototype
+
+Use Python **3.12.13**, matching the saved model environment. From the project root:
+
+```bash
+python -m venv .venv
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+# macOS/Linux: source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m streamlit run app.py --server.address localhost --browser.gatherUsageStats false
+```
+
+Open the local URL printed by Streamlit. The app requires the trusted project files
+`models/pnc_risk_pipeline.joblib` and `models/pnc_risk_model_metadata.json`; it does
+not require DHS data. Only load joblib files from trusted sources. The pinned
+scikit-learn and XGBoost versions match the artifact metadata.
+
+Complete all 13 predictors after delivery details are known. Category choices come
+directly from the fitted encoder. The two ANC fields may be left blank for the
+saved pipeline to impute; enter zero visits for no ANC and leave first ANC month
+blank. Age is restricted to 15–49, matching the project population. The app uses
+the original predictor order and preprocessing, displays the probability of
+`missed_timely_pnc = 1`, and flags probabilities **≥ 0.27827033400535583**, using
+the metadata threshold rather than the classifier's default cutoff.
+
+This is research decision support, **not a clinical diagnosis** or a validated
+clinical deployment. Scores can be wrong; below-threshold results must not be used
+to withhold care. The form requests no DHS identifiers and the app does not load
+raw records, log entries, or save predictions. Keep it local and use synthetic
+inputs for demonstrations.
+
+Run the synthetic model and UI checks with `python -m unittest discover -s tests`.
+
  ## Dataset
   This project uses the Kenya DHS 2022 dataset: KENR8CFL (Births/Pregnancy/Postnatal Care Recode) and KEGE8AFL (GPS cluster file). Per DHS Program terms of use, this data cannot be redistributed. Each team member/user must independently register and request access: 
     1. Register at https://dhsprogram.com/data/new-user-registration.cfm 

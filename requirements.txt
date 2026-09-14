@@ -1,10 +1,13 @@
-pandas
-numpy
+# Match the saved pipeline environment (Python 3.12.13).
+scikit-learn==1.9.0
+xgboost==3.3.0
+joblib>=1.4,<2
+numpy>=1.26,<3
+pandas>=2.2,<3
+streamlit>=1.45,<2
+
+# Existing notebook and analysis dependencies.
 matplotlib
 seaborn
-scikit-learn
-xgboost
 shap
-joblib
-streamlit
 jupyter
